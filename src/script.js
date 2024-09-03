@@ -161,7 +161,5 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastSearchCity = localStorage.getItem("lastSearchCity");
   if (lastSearchCity) {
     searchCity(lastSearchCity);
-  } else {
-    searchCity("Gent");
   }
 });
