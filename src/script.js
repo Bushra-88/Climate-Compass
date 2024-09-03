@@ -41,6 +41,7 @@ async function searchCity(city) {
     const response = await fetch(apiUrl);
     const data = await response.json();
     refreshWeather(data);
+    getCityPhoto(city);
   } catch (error) {
     console.log("Error fetching weather data:", error);
   }
@@ -125,6 +126,30 @@ function displayForecast(data) {
   forecastElement.innerHTML = forecastHtml;
 }
 
+//TODO: get city photo from Unsplash API
+async function getCityPhoto(city) {
+  const apiKey = "kQjKixGY_Mrq17KtL20ILb5TDQ7p9JA91rGHjEdAAIs";
+  const apiUrl = `https://api.unsplash.com/search/photos?query=${city}&orientation=landscape&count=1`;
+
+  try {
+    const response = await fetch(apiUrl, {
+      headers: {
+        Authorization: `Client-ID ${apiKey}`,
+      },
+    });
+    const data = await response.json();
+    const photoUrl = data.results[0].urls.regular;
+    displayCityPhoto(photoUrl);
+  } catch (error) {
+    console.log("Error fetching city photo:", error);
+  }
+}
+
+//TODO: display city photo
+function displayCityPhoto(photoUrl) {
+  const photoElement = document.querySelector("#city-photo");
+  photoElement.innerHTML = `<img src="${photoUrl}" class="city-photo">`;
+}
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handelSearchSubmit);
 searchCity("Gent"); //by default the visible city is Gent
