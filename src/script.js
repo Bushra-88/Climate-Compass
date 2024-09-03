@@ -1,4 +1,4 @@
-//TODO: update the page with the current data
+// update the page with the current data
 function refreshWeather(data) {
   console.log(data);
   let cityElement = document.querySelector("#city");
@@ -32,7 +32,7 @@ function refreshWeather(data) {
   getForecast(city);
 }
 
-//TODO: search for the city's current weather
+// search for the city's current weather
 async function searchCity(city) {
   let apiKey = "c7ab33300b3c4c59ba1141915240209";
   let apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
@@ -75,7 +75,7 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-//TODO:get forecast weather data
+//get forecast weather data
 async function getForecast(city) {
   let apiKey = "c7ab33300b3c4c59ba1141915240209";
   let apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5`;
@@ -89,14 +89,14 @@ async function getForecast(city) {
   }
 }
 
-//TODO:get format day
+//get format day
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[(date.getDay() + 1) % 7]; // +1 to make sure the forecast start from the next day 'not today' and the %7 to  ensure that the day of the week wraps around to Sunday (0)
 }
 
-//TODO:build the forecast
+//build the forecast
 function displayForecast(data) {
   let forecastHtml = "";
   data.forecast.forecastday.forEach(function (day, index) {
@@ -126,7 +126,7 @@ function displayForecast(data) {
   forecastElement.innerHTML = forecastHtml;
 }
 
-//TODO: get city photo from Unsplash API
+// get city photo from Unsplash API
 async function getCityPhoto(city) {
   const apiKey = "kQjKixGY_Mrq17KtL20ILb5TDQ7p9JA91rGHjEdAAIs";
   const apiUrl = `https://api.unsplash.com/search/photos?query=${city}&orientation=landscape&count=1`;
@@ -145,11 +145,13 @@ async function getCityPhoto(city) {
   }
 }
 
-//TODO: display city photo
+//display city photo
 function displayCityPhoto(photoUrl) {
   const photoElement = document.querySelector("#city-photo");
   photoElement.innerHTML = `<img src="${photoUrl}" class="city-photo">`;
 }
+
+//Add event listener
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handelSearchSubmit);
 searchCity("Gent"); //by default the visible city is Gent
