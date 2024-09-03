@@ -51,6 +51,7 @@ function handelSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-form-input");
   searchCity(searchInput.value);
+  localStorage.setItem("lastSearchCity", searchInput.value); // store user's choice
 }
 
 function formatDate(date) {
@@ -155,3 +156,12 @@ function displayCityPhoto(photoUrl) {
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handelSearchSubmit);
 searchCity("Gent"); //by default the visible city is Gent
+
+document.addEventListener("DOMContentLoaded", () => {
+  let lastSearchCity = localStorage.getItem("lastSearchCity");
+  if (lastSearchCity) {
+    searchCity(lastSearchCity);
+  } else {
+    searchCity("Gent");
+  }
+});
