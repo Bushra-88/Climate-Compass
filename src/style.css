@@ -6,7 +6,7 @@ body {
   background-color: antiquewhite;
 }
 .weather-app-container {
-  background-color: #f8f6fdcc;
+  background-color: #f9f7fe;
   max-width: 600px;
   margin: 80px auto;
   padding: 30px;
@@ -52,6 +52,12 @@ header {
   cursor: pointer;
 }
 
+.city-photo {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: contain;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 main {
   padding: 30px 0;
 }
@@ -101,7 +107,7 @@ main {
 .weather-forecast {
   display: flex;
   justify-content: space-around;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 .weather-forecast-date {
   text-align: center;
