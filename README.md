@@ -15,10 +15,6 @@
 
 ![screenshot](./src/images/climat-compass.png)
 
-## live Demo
-
-You can find the app on [Netlify]()
-
 > Thank you for visiting 😊
 
 ![cat](https://i.chzbgr.com/full/8348516864/hAC95BC93/ill-stand-here-and-continue-to-make-sure-it-stays-nice)
