@@ -157,3 +157,56 @@ a {
   text-decoration: none;
   font-weight: 700;
 }
+
+@media (max-width: 768px) {
+  .weather-app-container {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+  }
+}
+/*for phons*/
+@media (max-width: 480px) {
+  .weather-app-container {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+  .search-form-input {
+    width: 100%;
+  }
+  .search-form-button {
+    margin-left: 0;
+  }
+  .weather-app-city {
+    font-size: 28px;
+  }
+  .weather-app-details {
+    font-size: 16px;
+  }
+  .weather-app-temperature {
+    font-size: 64px;
+  }
+  .weather-app-unit {
+    font-size: 20px;
+  }
+  .weather-forecast-icon {
+    width: 64px;
+    height: 64px;
+  }
+  .weather-forecast-temperatures {
+    font-size: 14px;
+  }
+  .weather-forecast {
+    flex-direction: column;
+  }
+  .weather-forecast-date {
+    margin-bottom: 10px;
+  }
+  .weather-forecast-icon {
+    margin: 0 auto;
+  }
+  .weather-forecast-temperatures {
+    justify-content: space-between;
+  }
+}
