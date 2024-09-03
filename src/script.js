@@ -35,7 +35,7 @@ function refreshWeather(data) {
 // search for the city's current weather
 async function searchCity(city) {
   let apiKey = "c7ab33300b3c4c59ba1141915240209";
-  let apiUrl = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+  let apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
 
   try {
     const response = await fetch(apiUrl);
@@ -78,7 +78,7 @@ function formatDate(date) {
 //get forecast weather data
 async function getForecast(city) {
   let apiKey = "c7ab33300b3c4c59ba1141915240209";
-  let apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5`;
+  let apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5`;
 
   try {
     const response = await fetch(apiUrl);
