@@ -39,11 +39,20 @@ async function searchCity(city) {
 
   try {
     const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error("City not found");
+    }
     const data = await response.json();
-    refreshWeather(data);
-    getCityPhoto(city);
+    //Add validation to check if city is found
+    if (data && data.location && data.location.name) {
+      refreshWeather(data);
+      getCityPhoto(city);
+    } else {
+      alert("Please enter a valid city name");
+    }
   } catch (error) {
     console.log("Error fetching weather data:", error);
+    alert("Please enter a valid city name");
   }
 }
 
