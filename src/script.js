@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const soundIcon = document.getElementById("sound-icon");
 const backgroundAudio = document.getElementById("background-audio");
 
-let isMuted = false;
+let isMuted = true;
 
 soundIcon.addEventListener("click", () => {
   //Toggle the muted state
