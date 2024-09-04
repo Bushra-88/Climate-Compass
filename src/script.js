@@ -256,3 +256,23 @@ soundIcon.addEventListener("click", () => {
     backgroundAudio.play();
   }
 });
+
+//Change theme
+const themeIcon = document.getElementById("theme-icon");
+const backgroundImage = document.querySelector(".background-image");
+let isDarkMode = false;
+
+themeIcon.addEventListener("click", () => {
+  isDarkMode = !isDarkMode;
+  document.body.classList.toggle("dark-mode");
+
+  if (isDarkMode) {
+    document.body.classList.add("dark-mode");
+    themeIcon.src = "./src/images/sun.png";
+    backgroundImage.style.backgroundImage = "url(./src/images/night.jpg)";
+  } else {
+    document.body.classList.remove("dark-mode");
+    themeIcon.src = "./src/images/moon.png";
+    backgroundImage.style.backgroundImage = "url(./src/images/day.jpg)";
+  }
+});

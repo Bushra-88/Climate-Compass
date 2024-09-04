@@ -14,6 +14,17 @@ body {
   filter: blur(2px);
   z-index: -1; /*bg img behind the elements*/
 }
+body.dark-mode .background-image {
+  background-image: url(./images/night.jpg);
+}
+.theme-icon {
+  width: 40px;
+  margin: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
 .weather-app-container {
   background-color: #f9f7fe;
   max-width: 600px;
@@ -21,6 +32,7 @@ body {
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 30px 50px rgba(65, 58, 100, 0.08);
+  flex: 1;
 }
 
 header {
