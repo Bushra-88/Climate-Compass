@@ -27,7 +27,19 @@ header {
   border-bottom: 1px solid #f9f7fe;
   padding: 0 0 30px 0;
 }
+.search-form {
+  display: flex;
+  align-items: center;
+}
 
+.sound-icon {
+  width: 30px;
+  margin: 20px;
+  margin-left: 15px;
+}
+.sound-icon:hover {
+  opacity: 0.5;
+}
 .search-form-input {
   background-color: white;
   border: none;

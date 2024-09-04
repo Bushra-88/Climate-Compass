@@ -231,3 +231,28 @@ document.addEventListener("DOMContentLoaded", () => {
     searchCity(lastSearchCity);
   }
 });
+
+//Add sound to the background
+const soundIcon = document.getElementById("sound-icon");
+const backgroundAudio = document.getElementById("background-audio");
+
+let isMuted = false;
+
+soundIcon.addEventListener("click", () => {
+  //Toggle the muted state
+  isMuted = !isMuted;
+
+  //Update the sound icon's image
+  if (isMuted) {
+    soundIcon.src = "./src/images/volume-off.png";
+  } else {
+    soundIcon.src = "./src/images/volume-up.png";
+  }
+
+  //play or pause the background audio
+  if (isMuted) {
+    backgroundAudio.pause();
+  } else {
+    backgroundAudio.play();
+  }
+});

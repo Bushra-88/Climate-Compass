@@ -26,6 +26,12 @@
             placeholder="Enter your city ..."
             required />
           <input type="submit" value="Search" class="search-form-button" />
+          <div>
+            <img
+              src="./src/images/volume-up.png"
+              id="sound-icon"
+              class="sound-icon" />
+          </div>
         </form>
       </header>
 
@@ -53,7 +59,12 @@
 
         <div class="weather-forecast" id="forecast"></div>
       </main>
-
+      <audio id="background-audio" autoplay loop>
+        play
+        <source
+          src="./src/relaxing-birds-and-piano-music-137153.mp3"
+          type="audio/mp3" />
+      </audio>
       <footer>
         This Project made with 🩷 by
         <a href="https://github.com/Bushra-88" target="_blank"
