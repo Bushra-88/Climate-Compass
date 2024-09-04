@@ -89,6 +89,28 @@ function handelSearchSubmit(event) {
   localStorage.setItem("lastSearchCity", searchInput.value); // store user's choice
 }
 
+// Get the user's current location
+navigator.geolocation.getCurrentPosition((position) => {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+
+  // Fetch the weather data for the user's current location
+  const apiKey = "c7ab33300b3c4c59ba1141915240209";
+  const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=no`;
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      // Display the weather data for the user's current location
+      const cityElement = document.querySelector("#city");
+      cityElement.innerHTML = data.location.name;
+
+      const temperatureElement = document.querySelector("#temperature");
+      temperatureElement.innerHTML = Math.round(data.current.temp_c);
+    })
+    .catch((error) => console.log("Error fetching weather data:", error));
+});
+
 function formatDate(date) {
   let hours = date.getHours();
   let minutes = date.getMinutes();
