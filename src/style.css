@@ -190,7 +190,7 @@ main {
   justify-content: center;
   margin-top: 10px;
 }
-.dark-mode.weather-forecast-temperatures {
+.dark-mode .weather-forecast-temperatures {
   color: #6db9de;
 }
 .weather-forecast-temperature {
@@ -214,7 +214,7 @@ a {
 }
 
 .dark-mode a {
-  color: #6db9de;
+  color: #c77602;
 }
 @media (max-width: 768px) {
   .weather-app-container {
