@@ -232,39 +232,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-//Add sound to the background
-const soundIcon = document.getElementById("sound-icon");
-const backgroundAudio = document.getElementById("background-audio");
-
-let isMuted = true;
-
-soundIcon.addEventListener("click", () => {
-  //Toggle the muted state
-  isMuted = !isMuted;
-
-  //Update the sound icon's image
-  if (isMuted) {
-    soundIcon.src = "./src/images/volume-off.png";
-  } else {
-    soundIcon.src = "./src/images/volume-up.png";
-  }
-
-  //play or pause the background audio
-  if (isMuted) {
-    backgroundAudio.pause();
-  } else {
-    backgroundAudio.play();
-  }
-});
-
-//Change theme
+//Add sound to the background and change the background
 const themeIcon = document.getElementById("theme-icon");
 const backgroundImage = document.querySelector(".background-image");
+const dayAudio = document.getElementById("day-audio");
+const nightAudio = document.getElementById("night-audio");
+const soundIcon = document.getElementById("sound-icon");
+
 let isDarkMode = false;
+let isMuted = true;
+
+function toggleAudio() {
+  if (isDarkMode) {
+    dayAudio.pause();
+    if (!isMuted) nightAudio.play();
+  } else {
+    nightAudio.pause();
+    if (!isMuted) dayAudio.play();
+  }
+}
 
 themeIcon.addEventListener("click", () => {
   isDarkMode = !isDarkMode;
-  document.body.classList.toggle("dark-mode");
 
   if (isDarkMode) {
     document.body.classList.add("dark-mode");
@@ -275,4 +264,22 @@ themeIcon.addEventListener("click", () => {
     themeIcon.src = "./src/images/moon.png";
     backgroundImage.style.backgroundImage = "url(./src/images/day.jpg)";
   }
+
+  toggleAudio();
 });
+
+soundIcon.addEventListener("click", () => {
+  isMuted = !isMuted;
+
+  if (isMuted) {
+    soundIcon.src = "./src/images/volume-off.png";
+    dayAudio.pause();
+    nightAudio.pause();
+  } else {
+    soundIcon.src = "./src/images/volume-up.png";
+    toggleAudio();
+  }
+});
+
+// Initial audio setup
+toggleAudio();
