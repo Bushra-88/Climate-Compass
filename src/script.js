@@ -32,28 +32,54 @@ function refreshWeather(data) {
   getForecast(city);
 }
 
-// search for the city's current weather
-async function searchCity(city) {
+// search for the city's current weather in async way
+// async function searchCity(city) {
+//   let apiKey = "c7ab33300b3c4c59ba1141915240209";
+//   let apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+
+//   try {
+//     const response = await fetch(apiUrl);
+//     if (!response.ok) {
+//       throw new Error("City not found");
+//     }
+//     const data = await response.json();
+//     //Add validation to check if city is found
+//     if (data && data.location && data.location.name) {
+//       refreshWeather(data);
+//       getCityPhoto(city);
+//     } else {
+//       alert("Please enter a valid city name");
+//     }
+//   } catch (error) {
+//     console.log("Error fetching weather data:", error);
+//     alert("Please enter a valid city name");
+//   }
+// }
+
+// search for the city's current weather in fetch way
+function searchCity(city) {
   let apiKey = "c7ab33300b3c4c59ba1141915240209";
   let apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
 
-  try {
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error("City not found");
-    }
-    const data = await response.json();
-    //Add validation to check if city is found
-    if (data && data.location && data.location.name) {
-      refreshWeather(data);
-      getCityPhoto(city);
-    } else {
+  fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("City not found");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data && data.location && data.location.name) {
+        refreshWeather(data);
+        getCityPhoto(city);
+      } else {
+        alert("Please enter a valid city name");
+      }
+    })
+    .catch((error) => {
+      console.log("Error fetching weather data", error);
       alert("Please enter a valid city name");
-    }
-  } catch (error) {
-    console.log("Error fetching weather data:", error);
-    alert("Please enter a valid city name");
-  }
+    });
 }
 
 function handelSearchSubmit(event) {
@@ -85,18 +111,29 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
-//get forecast weather data
-async function getForecast(city) {
+//get forecast weather data in async way
+// async function getForecast(city) {
+//   let apiKey = "c7ab33300b3c4c59ba1141915240209";
+//   let apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5`;
+
+//   try {
+//     const response = await fetch(apiUrl);
+//     const data = await response.json();
+//     displayForecast(data);
+//   } catch (error) {
+//     console.log("Error fetching forecast data:", error);
+//   }
+// }
+
+//get forecast weather data in fetch way
+function getForecast(city) {
   let apiKey = "c7ab33300b3c4c59ba1141915240209";
   let apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5`;
 
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    displayForecast(data);
-  } catch (error) {
-    console.log("Error fetching forecast data:", error);
-  }
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => displayForecast(data))
+    .catch((error) => console.log("Error fetching forecast data:", error));
 }
 
 //get format day
