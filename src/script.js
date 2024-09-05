@@ -1,3 +1,5 @@
+let temperatureChart = null;
+
 // update the page with the current data
 function refreshWeather(data) {
   console.log(data);
@@ -72,6 +74,7 @@ function searchCity(city) {
       if (data && data.location && data.location.name) {
         refreshWeather(data);
         getCityPhoto(city);
+        getHourlyForecast(city);
       } else {
         alert("Please enter a valid city name");
       }
@@ -191,6 +194,66 @@ function displayForecast(data) {
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
+}
+
+//Get the hourly forecast
+function getHourlyForecast(city) {
+  let apiKey = "c7ab33300b3c4c59ba1141915240209";
+  let apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=1&aqi=no&alerts=no`;
+
+  fetch(apiUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch hourly forecast data");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      createTemperatureChart(data.forecast.forecastday[0].hour);
+    })
+    .catch((error) => {
+      console.log("Error fetching hourly forecast data:", error);
+    });
+}
+
+function createTemperatureChart(hourlyData) {
+  const ctx = document.getElementById("temperatureChart").getContext("2d");
+
+  const labels = hourlyData.map((hour) => {
+    const date = new Date(hour.time);
+    return date.getHours() + ":00";
+  });
+
+  const temperatures = hourlyData.map((hour) => hour.temp_c);
+
+  // If a chart already exists, destroy it
+  if (temperatureChart) {
+    temperatureChart.destroy();
+  }
+
+  // Create a new chart
+  temperatureChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Temperature (°C)",
+          data: temperatures,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: false,
+        },
+      },
+    },
+  });
 }
 
 // get city photo from Unsplash API
