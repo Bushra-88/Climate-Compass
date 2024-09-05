@@ -10,10 +10,14 @@
 - City photo display
 - Built with HTML, CSS, and vanilla JavaScript
 - Utilizes an API for weather data
+- **Dark and Light Theme**: Switch between two stylish themes to suit your preference
+- **Immersive Sound Experience**: Each theme comes with its own unique sound effects to enhance the user experience
+- **Hourly Forecast Chart**: Visualize the temperature forecast for the next 24 hours with our interactive chart
 
 ## Screenshot
 
-![screenshot](./src/images/climat-compass.png)
+![screenshot](./src/images/daytheme.png)
+![screenshot](./src/images/nighttheme.png)
 
 ## live Demo
 
