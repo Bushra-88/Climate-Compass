@@ -32,7 +32,7 @@ function refreshWeather(data) {
   getForecast(city);
 }
 
-// search for the city's current weather in async way
+/// search for the city's current weather in async way
 // async function searchCity(city) {
 //   let apiKey = "c7ab33300b3c4c59ba1141915240209";
 //   let apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
@@ -77,16 +77,9 @@ function searchCity(city) {
       }
     })
     .catch((error) => {
-      console.log("Error fetching weather data", error);
+      console.log("Error fetching weather data:", error);
       alert("Please enter a valid city name");
     });
-}
-
-function handelSearchSubmit(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-form-input");
-  searchCity(searchInput.value);
-  localStorage.setItem("lastSearchCity", searchInput.value); // store user's choice
 }
 
 // Get the user's current location
@@ -95,7 +88,7 @@ navigator.geolocation.getCurrentPosition((position) => {
   const lon = position.coords.longitude;
 
   // Fetch the weather data for the user's current location
-  const apiKey = "c7ab33300b3c4c59ba1141915240209";
+  const apiKey = "YOUR_API_KEY";
   const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=no`;
 
   fetch(apiUrl)
@@ -110,6 +103,12 @@ navigator.geolocation.getCurrentPosition((position) => {
     })
     .catch((error) => console.log("Error fetching weather data:", error));
 });
+function handelSearchSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-form-input");
+  searchCity(searchInput.value);
+  localStorage.setItem("lastSearchCity", searchInput.value); // store user's choice
+}
 
 function formatDate(date) {
   let hours = date.getHours();
@@ -151,7 +150,6 @@ function formatDate(date) {
 function getForecast(city) {
   let apiKey = "c7ab33300b3c4c59ba1141915240209";
   let apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5`;
-
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => displayForecast(data))
