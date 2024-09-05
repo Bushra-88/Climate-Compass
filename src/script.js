@@ -91,7 +91,7 @@ navigator.geolocation.getCurrentPosition((position) => {
   const lon = position.coords.longitude;
 
   // Fetch the weather data for the user's current location
-  const apiKey = "YOUR_API_KEY";
+  const apiKey = "c7ab33300b3c4c59ba1141915240209";
   const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=no`;
 
   fetch(apiUrl)
