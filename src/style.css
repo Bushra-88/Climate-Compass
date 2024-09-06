@@ -13,6 +13,7 @@ body {
   background-repeat: no-repeat;
   filter: blur(2px);
   z-index: -1; /*bg img behind the elements*/
+  animation: zoom 120s infinite linear;
 }
 body.dark-mode .background-image {
   background-image: url(./images/night.jpg);
@@ -228,6 +229,14 @@ a {
   margin-top: 20px;
 }
 
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
 @media (max-width: 768px) {
   .weather-app-container {
     max-width: 90%;
