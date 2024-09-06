@@ -4,7 +4,7 @@ let temperatureChart = null;
 function refreshWeather(data) {
   console.log(data);
   let cityElement = document.querySelector("#city");
-  let city = data.location.name;
+  let city = data.location.name + "," + data.location.country;
 
   let timeElement = document.querySelector("#time");
   let date = new Date(data.location.localtime_epoch * 1000);
