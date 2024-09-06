@@ -237,6 +237,7 @@ a {
     transform: scale(1.2);
   }
 }
+
 @media (max-width: 768px) {
   .weather-app-container {
     max-width: 90%;
@@ -266,11 +267,15 @@ a {
   .weather-app-details {
     font-size: 16px;
   }
+  .weather-app-icon {
+    width: 40px;
+    height: 40px;
+  }
   .weather-app-temperature {
-    font-size: 64px;
+    font-size: 40px;
   }
   .weather-app-unit {
-    font-size: 20px;
+    font-size: 10px;
   }
   .weather-forecast-icon {
     width: 64px;
