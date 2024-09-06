@@ -248,6 +248,9 @@ a {
   .search-form-button {
     margin-left: 0;
   }
+  .sound-icon {
+    margin-top: 50px;
+  }
   .weather-app-city {
     font-size: 28px;
   }
@@ -277,6 +280,6 @@ a {
     margin: 0 auto;
   }
   .weather-forecast-temperatures {
-    justify-content: space-between;
+    justify-content: center;
   }
 }
