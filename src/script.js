@@ -256,25 +256,44 @@ function createTemperatureChart(hourlyData) {
   });
 }
 
-// get city photo from Unsplash API
-async function getCityPhoto(city) {
+// get city photo from Unsplash API in async way
+// async function getCityPhoto(city) {
+//   const apiKey = "kQjKixGY_Mrq17KtL20ILb5TDQ7p9JA91rGHjEdAAIs";
+//   const apiUrl = `https://api.unsplash.com/search/photos?query=${city}&orientation=landscape&count=1`;
+
+//   try {
+//     const response = await fetch(apiUrl, {
+//       headers: {
+//         Authorization: `Client-ID ${apiKey}`,
+//       },
+//     });
+//     const data = await response.json();
+//     const photoUrl = data.results[0].urls.regular;
+//     displayCityPhoto(photoUrl);
+//   } catch (error) {
+//     console.log("Error fetching city photo:", error);
+//   }
+// }
+// get city photo from Unsplash API in fetch way
+function getCityPhoto(city) {
   const apiKey = "kQjKixGY_Mrq17KtL20ILb5TDQ7p9JA91rGHjEdAAIs";
   const apiUrl = `https://api.unsplash.com/search/photos?query=${city}&orientation=landscape&count=1`;
 
-  try {
-    const response = await fetch(apiUrl, {
-      headers: {
-        Authorization: `Client-ID ${apiKey}`,
-      },
+  fetch(apiUrl, {
+    headers: {
+      Authorization: `Client-ID ${apiKey}`,
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const photoUrl = data.results[0].urls.regular;
+      console.log(data);
+      displayCityPhoto(photoUrl);
+    })
+    .catch((error) => {
+      console.log("Error fetching city photo:", error);
     });
-    const data = await response.json();
-    const photoUrl = data.results[0].urls.regular;
-    displayCityPhoto(photoUrl);
-  } catch (error) {
-    console.log("Error fetching city photo:", error);
-  }
 }
-
 //display city photo
 function displayCityPhoto(photoUrl) {
   const photoElement = document.querySelector("#city-photo");
