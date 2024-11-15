@@ -1,6 +1,6 @@
 # Climate-Compass
 
-![gif](https://media.baamboozle.com/uploads/images/19125/1569648380_19492)
+![gif](https://cdn.dribbble.com/users/2277649/screenshots/8498294/media/1f87fae49becc4fac866d70cbb5eca37.gif)
 
 > Climate-Compass is a weather forecast application that provides the real temperature for 5 days and a city photo The application is designed to be user-friendly, with a clean and intuitive interface that makes it easy
 
